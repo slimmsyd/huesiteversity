@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: "IBM Plex Mono", monospace;
+      }
+      #green {
+        color: #00ff0a;
+      }
+      #grey {
+        color: #949494;
+        font-size: 40px;
+      }
+      .header {
+        background: #5b42e5;
+        width: 100%;
+        height: 49px;
+        padding-left: 33px;
+        padding-top:10px;
+        padding-bottom:10px;
+        display: flex;
+        flex-direction: row;
+        gap: 1.1rem;
+        align-items: center;
+        color: white;
+      }
+      .header p { 
+        margin: 0;
+        padding: 0;
+      }
+      .sectionHeader {
+        height: 90vh;
+        background: url("universeBg.png");
+        background-size: cover;
+        background-position: center center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .sectionContainer {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        width: 520px;
+        text-align: center;
+        margin: 0 auto;
+        z-index: 5;
+        position: relative;
+        overflow: hidden;
+      }
+      .sectionContainer h1 {
+        padding: 0;
+        margin: 0;
+        font-size: 60px;
+      }
+      .overlayDiv {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: #25252585;
+        /* width: 100%; */
+        height: 100%;
+        z-index: 1;
+      }
+      .sectionFooter {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 20px;
+        z-index: 10;
+      }
+      .sectionFooter p {
+        color: #d8d8d8;
+        /* flex: 1; */
+      }
+      .sectionFooter button {
+        transform: translateX(80px);
+        border: 1px solid white;
+        background-color: transparent;
+        color: #fff;
+        width: 185px;
+        cursor: pointer;
+      }
+
+      .sectionFirst {
+        padding-left: 33px;
+        padding-right: 33px;
+      }
+      .containerContents .flexRow {
+        flex: 1;
+      }
+
+      .containerContents {
+        padding-top: 9.5rem;
+        padding-bottom: 9.5rem;
+        display: flex;
+        justify-content: space-be;
+      }
+      @media screen and (max-width: 1050px) {
+        .containerContents {
+          width: 700px;
+          margin-right: auto;
+          flex-direction: column;
+          padding: 7rem 0rem !important;
+        }
+        .containerText {
+          width: 100% !important;
+        }
+        .sectionFooter {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .sectionFooter button {
+          transform: translateX(0px) !important;
+          border: 1px solid white;
+          background-color: transparent;
+          color: #fff;
+          width: 185px;
+          height: 50px !important;
+          cursor: pointer;
+        }
+      }
+      @media screen and (max-width: 750px) {
+        .containerContents {
+          width: 100%;
+          margin-right: auto;
+          flex-direction: column;
+          padding: 4rem 0rem !important;
+        }
+        .containerText {
+          width: 100% !important;
+        }
+        .sectionContainer {
+          width: 100%;
+        }
+      }
+
+      .containerText {
+        width: 50%;
+      }
+      h2 {
+        font-size: 40px;
+      }
+      h3 {
+        font-size: 24px;
+      }
+
+      .banner {
+        height: 572px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+      }
+      .banner img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+      .flex {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 33px;
+      }
+      .flexRow {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        gap: 1.25rem;
+      }
+      .flexCol {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      .flexRow h3 {
+        font-weight: 400;
+      }
+
+      .whiteCircle {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: 0.5px solid #202020;
+        background: transparent;
+      }
+      .flexRow h3 {
+        margin: 0;
+        padding: 0;
+      }
+      h2 {
+        font-weight: 500;
+      }
+      h3 {
+        font-weight: 400;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer {
+        margin-top: 88px;
+        height: 100%;
+        color: white;
+        background: #121111;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 33px;
+        gap: 1.25rem;
+      }
+      @media screen and (max-width: 950px) { 
+        .header{
+            align-items: center;
+            justify-content: center;
+            width: auto;
+        }
+        .footer{
+            flex-direction: column-reverse;
+            align-items: center;
+            padding-bottom: 2rem;
+            padding-left: 0px;
+        }
+        h2, #grey{
+            font-size: 32px;
+        }
+        .banner{
+            width: 100% !important;
+        }
+        /* .sectionFirst{
+            padding: 0px;
+        }
+        h2, h1,  h3, span{
+            margin-left: 1rem;
+            margin-rigth: 1rem;
+        } */
+      }
+
+      img{
+        width: 100%;
+      }
+      .paddingTop{
+        padding-top: 2rem;
+      }
+    </style>
+
+    <main>
+      <div class="header"
+      >
+        <p>Need help?</p>
+        <p>contact@codenoir.com</p>
+    </div>
+
+      <section class="sectionHeader">
+        <div class="overlayDiv"></div>
+
+        <div class="sectionContainer">
+          <h1>Master The Future Of Tech</h1>
+        </div>
+        "
+
+        <div class="sectionFooter">
+          <p>
+            Unlock your full potential as a
+            <span id="green">digital engineer</span> with our
+            <span id="green">learning platform</span>
+          </p>
+
+          <button class="buyNow">Buy Course Now</button>"
+        </div>
+      </section>
+
+      <section class="sectionFirst">
+        <div class="containerContents">
+          <div class="flexRow">
+            <span class="whiteCircle"> </span>
+            <h3>Learn the skills of tomorrow</h3>
+          </div>
+
+          <div class="containerText">
+            <h3>
+              Be at the forefront of innovation by mastering the technologies
+              that are shaping the world of tomorrow with our forward-thinking
+              online learning platform.
+            </h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="sectionFirst">
+        <div class="banner">
+          <div class="overlayDiv flex">
+            <h2>Artificial Intelligence</h2>
+
+            <div class="flexCol">
+              <h2>$1,200</h2>
+              <div id="grey">USD</div>
+            </div>
+          </div>
+          <img src="ChatBot_Image.png" />
+        </div>
+
+        <div class="containerContents">
+          <div class="flexRow">
+            <span class="whiteCircle"> </span>
+            <h3>Learn the skills of tomorrow</h3>
+          </div>
+
+          <div class="containerText">
+            <h2>
+              Learn about the field of artificial intelligence in this course.
+            </h2>
+            <h3>
+              You’ll study topics such as machine learning, natural language
+              processing, and computer vision, and have the opportunity to
+              program and design your own intelligent systems. Discover the
+              capabilities and limitations of AI as you work through hands-on
+              projects and challenges.
+            </h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="sectionFirst">
+        <div class="banner">
+          <div class="overlayDiv flex">
+            <h2>Ai Chatbot Workshop</h2>
+
+            <div class="flexCol">
+              <h2>$1,200</h2>
+              <div id="grey">USD</div>
+            </div>
+          </div>
+          <img src="Future_AI_Image.png" />
+        </div>
+
+        <div class="containerContents">
+          <div class="flexRow">
+            <span class="whiteCircle"> </span>
+            <h3>Learn the skills of tomorrow</h3>
+          </div>
+
+          <div class="containerText">
+            <h2>Learn about creating own AI Bots in this course.</h2>
+            <h3>
+              Design and build your own chatbot in this workshop. Chatbots are
+              computer programs that can simulate human conversation and perform
+              a variety of tasks. You’ll learn about artificial intelligence and
+              how to use it to power your chatbot. By the end, you’ll be able to
+              create your own chatbot from scratch.
+            </h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="sectionFirst">
+        <div class="banner">
+          <div class="overlayDiv flex">
+            <h2>Blockchain Engineering</h2>
+
+            <div class="flexCol">
+              <h2>$1,200</h2>
+              <div id="grey">USD</div>
+            </div>
+          </div>
+          <img src="Engineer_Image.png" />
+        </div>
+
+        <div class="containerContents">
+          <div class="flexRow">
+            <span class="whiteCircle"> </span>
+            <h3>Learn the skills of tomorrow</h3>
+          </div>
+
+          <div class="containerText">
+            <h2>Learn about engineering a Blockchain in this course.</h2>
+            <h3>
+              Learn how to build a blockchain and create innovative applications
+              in this course. Blockchain technology is used to authenticate and
+              record transactions, and has many potential use cases beyond
+              currency. In this course, you’ll learn how to build a blockchain
+              from scratch and apply your skills to a variety of applications.
+            </h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="sectionFirst">
+        <div class="banner">
+          <div class="overlayDiv flex">
+            <h2>Machine Learning</h2>
+
+            <div class="flexCol">
+              <h2>$1,200</h2>
+              <div id="grey">USD</div>
+            </div>
+          </div>
+          <img src="LEARNING_BOT.png" />
+        </div>
+
+        <div class="containerContents">
+          <div class="flexRow">
+            <span class="whiteCircle"> </span>
+            <h3>Learn the skills of tomorrow</h3>
+          </div>
+
+          <div class="containerText">
+            <h2>
+              Learn the intricate ins and outs of Machine Learning and Neural
+              Networks.
+            </h2>
+            <h3>
+              Unlock the potential of Machine Learning with our comprehensive
+              course. As a subset of AI, ML allows computers to learn from data,
+              identify patterns and make predictions. Our course covers all the
+              basics, from linear regression to deep learning, and provides
+              hands-on experience using real-world datasets. Designed for those
+              without prior ML experience, our program is the perfect foundation
+              for your journey in this rapidly growing field.
+            </h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="sectionFirst">
+        <div class="banner">
+          <div class="overlayDiv flex">
+            <h2>Programming Portal</h2>
+
+            <div class="flexCol">
+              <h2>$1,200</h2>
+              <div id="grey">USD</div>
+            </div>
+          </div>
+          <img src="Decentralized_Learning.png" />
+        </div>
+
+        <div class="containerContents">
+          <div class="flexRow">
+            <span class="whiteCircle"> </span>
+            <h3>Learn the skills of tomorrow</h3>
+          </div>
+
+          <div class="containerText">
+            <h2>Learn the fundamentals of programming</h2>
+            <h3>
+              Learn the fundamentals of programming and development in the
+              Programming Portal. We cover topics such as syntax, data types,
+              and algorithms, and teach you how to write your own algorithms to
+              solve problems. This course is perfect for those looking to start
+              a career in programming and development.
+            </h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="sectionFirst">
+        <div class="banner">
+          <div class="overlayDiv flex">
+            <h2>SaaS (Software as a service)</h2>
+
+            <div class="flexCol">
+              <h2>$1,200</h2>
+              <div id="grey">USD</div>
+            </div>
+          </div>
+          <img src="SASS_BOT.png" />
+        </div>
+
+        <div class="containerContents">
+          <div class="flexRow">
+            <span class="whiteCircle"> </span>
+            <h3>Learn the skills of tomorrow</h3>
+          </div>
+
+          <div class="containerText">
+            <h2>Learn how to develop your own SASS Product</h2>
+            <h3>
+              Learn how to design and develop your own software as a service
+              (SaaS) application. Software as a Service (SaaS) is a type of
+              cloud computing that delivers applications over the Internet,
+              allowing users to access and use the software through a web
+              browser. In this course You’ll learn how to maintain, test, and
+              deploy your SaaS application.
+            </h3>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="paddingTop">
+          <h3>Brought to you buy Hueman.</h3>
+        </div>
+
+        <div class="photoImage">
+          <img src="HuePhoto.png" />
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
